@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-about',
   standalone: true,
   imports: [RouterOutlet, CommonModule, FormsModule],
-  template: `<h2>nothing here go to jokes</h2>`
+  template: `<h2>nothing here go to jokes or the Store</h2>`
 })
 export class AboutPage implements OnInit, AfterContentInit {
  

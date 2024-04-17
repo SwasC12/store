@@ -1,0 +1,9 @@
+
+.container {
+  width: 100%;
+  min-height: 100vh; /* Temporary fixed height for testing */
+  background-color: #1e1e1e;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.17) 2px, transparent 2px);
+  background-size: 30px 30px;
+  background-position: -5px -5px;
+}

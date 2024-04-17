@@ -1,0 +1,138 @@
+<!-- <dx-button text="Get Items" (click)="getItemList()"></dx-button> -->
+<br>
+<span>ITEM DATA</span>
+<hr>
+<dx-radio-group
+  [items]="viewModes"
+  valueExpr="value"
+  displayExpr="text"
+  [(value)]="currentView"
+  (valueChange)="onViewChange($event)"
+></dx-radio-group>
+
+
+<!-- This is the code for the Grid View -->
+<ng-container *ngIf="currentView === 'grid'">
+  
+<dx-data-grid #myGrid [dataSource]="itemData" keyExpr="id"
+>
+  <dxi-column dataField="id" caption="ID" width="280" id="itemId"></dxi-column>
+  <dxi-column dataField="manufacturer" caption="Manufacturer" width="150"></dxi-column>
+  <dxi-column dataField="model" caption="Model" width="350"></dxi-column>
+  <dxi-column cellTemplate="editTemplate" width="100"></dxi-column >
+  <div *dxTemplate="let data of 'editTemplate'" class="editButton">
+      <dx-button width="100" 
+      id="edit-button"
+        text="edit"
+        stylingMode="outlined"
+        (click)="editItem(data)"
+        >
+      </dx-button>
+  </div>
+
+
+  <dxi-column cellTemplate="removeTemplate" width="100" ></dxi-column >
+    <div *dxTemplate="let data of 'removeTemplate'" class="removeButton">
+        <dx-button
+          id="rem-button"
+          text="remove"
+          stylingMode="outlined"
+          (click)="removeItem(data.data.id)"></dx-button>
+    </div>
+
+    <dxi-column cellTemplate="ViewTemplate" width="100" ></dxi-column >
+      <div *dxTemplate="let data of 'ViewTemplate'" class="viewButton">
+          <dx-button
+            id="view-button"
+            text="view"
+            stylingMode="outlined"
+            (click)="viewItem(data)"></dx-button>
+      </div>
+</dx-data-grid>
+<!-- popup for viewing -->
+<dx-popup [(visible)]="isPopupVisibleView" [width]="600" [height]="450" title="View Item" class="view-pop">
+  <img [src]="singleItemData.imageURL" alt="item" width="90px">
+  <dx-form [formData]="singleItemData" [readOnly]="true">
+    <dxi-item dataField="id"></dxi-item>
+    <dxi-item dataField="manufacturer"></dxi-item>
+    <dxi-item dataField="model"></dxi-item>
+    <dxi-item dataField="imageURL"></dxi-item>
+    <dxi-item dataField="information"></dxi-item>
+  </dx-form>
+  <br>
+  <!-- <dx-button text="Save" (click)="saveItem()"></dx-button>
+  <dx-button text="Cancel" (click)="cancelEdit()" id="cancel-button"></dx-button> -->
+</dx-popup>
+
+
+<!-- removeItem(data.data.id) -->
+<!-- popup for editing -->
+<dx-popup [(visible)]="isPopupVisible" [width]="600" [height]="450" title="Edit Item" class="edit-pop">
+  <img [src]="singleItemData.imageURL" alt="item" width="70px">
+  <dx-form [formData]="singleItemData">
+    <dxi-item dataField="id"></dxi-item>
+    <dxi-item dataField="manufacturer"></dxi-item>
+    <dxi-item dataField="model"></dxi-item>
+    <dxi-item dataField="imageURL"></dxi-item>
+    <dxi-item dataField="information"></dxi-item>
+  </dx-form>
+  <br>
+  <dx-button text="Save" (click)="saveItem()"></dx-button>
+  <dx-button text="Cancel" (click)="cancelEdit()" id="cancel-button"></dx-button>
+</dx-popup>
+
+
+<dx-button text="Add new Item" (click)="openCreatePopup()" stylingMode="outlined"></dx-button>
+
+<dx-popup [(visible)]="createPopVis" [width]="500" [height]="350" title="Create Item" class="create-pop">
+  <dx-form [formData]="singleItemData">
+    <dxi-item dataField="manufacturer"></dxi-item>
+    <dxi-item dataField="model"></dxi-item>
+    <dxi-item dataField="imageURL"></dxi-item>
+    <dxi-item dataField="information"></dxi-item>
+  </dx-form>
+  <br>
+  <dx-button text="Create" (click)="createItem()"></dx-button>
+  <dx-button text="Cancel" (click)="cancelCreate()"></dx-button>
+</dx-popup>
+
+</ng-container>
+<!-- End of Grid View -->
+
+
+
+
+<!-- This is the code for the Card View -->
+<ng-container *ngIf="currentView === 'card'">
+  <div class="card-container">
+    <div class="item-card" *ngFor="let item of itemData">
+      <h3>{{ item.model}}</h3>
+      <img [src]="item.imageURL" alt="{{item.model}}"  id="itemImg">
+      <p>{{item.information}}</p>
+    </div>
+  </div>
+
+
+  <dx-button text="Add new Item" (click)="openCreatePopup()" stylingMode="outlined"></dx-button>
+
+  <dx-popup [(visible)]="createPopVis" [width]="500" [height]="350" title="Create Item" class="create-pop">
+    <dx-form [formData]="singleItemData">
+      <dxi-item dataField="manufacturer"></dxi-item>
+      <dxi-item dataField="model"></dxi-item>
+      <dxi-item dataField="imageURL"></dxi-item>
+      <dxi-item dataField="information"></dxi-item>
+    </dx-form>
+    <br>
+    <dx-button text="Create" (click)="createItem()"></dx-button>
+    <dx-button text="Cancel" (click)="cancelCreate()"></dx-button>
+  </dx-popup>
+</ng-container>
+<!-- End of Card View -->
+
+
+
+
+
+
+
+

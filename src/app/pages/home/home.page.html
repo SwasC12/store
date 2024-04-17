@@ -1,3 +1,34 @@
-<h1>nothing here. go to jokes</h1>
+<h1>nothing here. go to jokes or the Store</h1>
+<span>This Page Will be cleaned soon.</span>
+<br>
+<br>
+<dx-button id="joke-button"
+  text="!click for a joke!"
+  stylingMode="outlined"
+  (click)="saveData()"
+  (click)="alertYou()"
+  (click)="gotoSomePractice()" >
+</dx-button>
 
 <div class="container"></div>
+
+<br>
+<hr>
+<dx-data-grid [dataSource]="friends" keyExpr="id" (onRowUpdating)="onRowUpdating($event)" >
+<dxo-editing
+[allowUpdating]="true"
+        mode="form">
+<dxo-form >
+  <dxi-item itemType="group" caption="Personal Data">
+      <dxi-item dataField="id"></dxi-item>
+      <dxi-item dataField="name"></dxi-item>
+      <dxi-item dataField="contact"></dxi-item>
+      <dxi-item dataField="email" editorType="dxTextArea" ></dxi-item>
+  </dxi-item>
+</dxo-form>
+</dxo-editing>
+  <dxi-column dataField="id" caption="ID" [width]="50" id="id"></dxi-column>
+    <dxi-column dataField="name" caption="Name" [width]="150" id="name"></dxi-column>
+    <dxi-column dataField="contact" caption="Contact Number" id="contact" [width]="150"></dxi-column>
+    <dxi-column dataField="email" caption="Email" id="email"></dxi-column>
+</dx-data-grid>

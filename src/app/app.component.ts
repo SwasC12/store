@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet, RouterModule, Router } from '@angular/router';
 import { SomethingComponent } from './components/something/something.component';
 import { NgModel } from '@angular/forms';
+import { DxButtonModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, SomethingComponent, RouterModule],
+  imports: [RouterOutlet, CommonModule, FormsModule, SomethingComponent, RouterModule, DxButtonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -26,6 +27,8 @@ export class AppComponent {
     this.router.navigate(['about']);
 
   }
+
+  
 
 
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DxButtonModule,DxSelectBoxModule } from 'devextreme-angular';
+import { DxButtonModule,DxSelectBoxModule,DxCheckBoxModule } from 'devextreme-angular';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { DxButtonModule,DxSelectBoxModule } from 'devextreme-angular';
   standalone: true,
   templateUrl: './practice.page.html',
   styleUrls: ['./practice.page.css'],
-  imports: [FormsModule, CommonModule, DxButtonModule, DxSelectBoxModule]
+  imports: [FormsModule, CommonModule, DxButtonModule, DxSelectBoxModule,DxCheckBoxModule]
 })
 export class PracticePage {
   joke: any;
@@ -21,7 +21,9 @@ export class PracticePage {
     { code: 'en', name: 'English' },
     { code: 'de', name: 'German' },
     { code: 'es', name: 'Spanish' },
-    { code: 'fr', name: 'French' }
+    { code: 'fr', name: 'French' },
+    { code: 'cs', name: 'Czech'},
+    { code: 'pt', name: 'Portuguese'}
   ];
   jokeCatergory: any[] = [
     { code: 'any', name: 'any'},
