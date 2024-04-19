@@ -1,9 +1,11 @@
 
-.container {
-  width: 100%;
-  min-height: 100vh; /* Temporary fixed height for testing */
-  background-color: #1e1e1e;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.17) 2px, transparent 2px);
-  background-size: 30px 30px;
-  background-position: -5px -5px;
+
+:host {
+  display: block;
+  height: 100vh;  
+   /* width: 100vw;   */
+  background-image: url(https://i.pinimg.com/originals/f4/a0/61/f4a061fb99cdc1d452fa43769d4dde4e.gif);
+  background-position: center;
+  /* background-size: cover; */
+  background-repeat: no-repeat;
 }

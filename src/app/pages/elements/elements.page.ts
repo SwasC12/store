@@ -13,5 +13,5 @@ import { DxButtonModule,DxDataGridModule, DxProgressBarModule, DxPopupModule, Dx
 //   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ElementsPage  {
-    
+   constructor(){} 
     }
